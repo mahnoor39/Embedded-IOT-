@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "author": "mano",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": -14,
+      "left": -5,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht",
+      "top": -180,
+      "left": 210,
+      "attrs": { "temperature": "25", "humidity": "55" }
+    },
+    {
+      "type": "wokwi-ssd1306",
+      "id": "oled",
+      "top": 120,
+      "left": 210,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn",
+      "top": 30,
+      "left": 210,
+      "attrs": { "color": "green" }
+    }
+  ],
+  "connections": [
+    ["esp:3V3", "dht:VCC", "red"],
+    ["esp:GND.1", "dht:GND", "black"],
+    ["esp:23", "dht:SDA", "green"],
+
+    ["esp:3V3", "oled:VCC", "red"],
+    ["esp:GND.2", "oled:GND", "black"],
+    ["esp:21", "oled:SDA", "blue"],
+    ["esp:22", "oled:SCL", "yellow"],
+
+    ["esp:5", "btn:1.l", "purple"],
+    ["btn:2.l", "esp:GND.3", "black"]
+  ]
+}
